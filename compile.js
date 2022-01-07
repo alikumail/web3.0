@@ -23,6 +23,8 @@ var input = {
   
 var output = JSON.parse(solc.compile(JSON.stringify(input)));
 
+module.exports = output;
+/*
 for (var contractName in output.contracts['Lottery.sol']) {
     console.log(
       contractName +
@@ -30,3 +32,4 @@ for (var contractName in output.contracts['Lottery.sol']) {
         output.contracts['Lottery.sol'][contractName].evm.bytecode.object
     );
   }
+  */
