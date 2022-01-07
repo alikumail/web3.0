@@ -1,3 +1,6 @@
+pragma solidity ^0.8.11;
+
+
 contract Lottery{
     // varibale to store managers address
     address public manager;
