@@ -1,12 +1,11 @@
-pragma solidity ^0.8.11;
-
+pragma solidity ^0.4.0;
 
 contract Lottery{
     // varibale to store managers address
     address public manager;
 
     //we are storing the address of the participants
-    address[] public  participants;
+    address[] public participants;
 
     constructor () public {
         manager = msg.sender;
@@ -25,12 +24,12 @@ contract Lottery{
         // select a random participant
         uint index = random() % participants.length;
         // transfer the contract balance to the participants
-        payable(participants[index]).transfer(address(this).balance);
+        participants[index].transfer(address(this).balance);
         // empty the address array
         participants = new address[](0);
     }
 
     function random() private view returns(uint256){
-        return uint(keccak256(abi.encodePacked(block.difficulty, block.timestamp, participants)));
+        return uint(keccak256(abi.encodePacked(block.difficulty, now, participants)));
     }
 }
